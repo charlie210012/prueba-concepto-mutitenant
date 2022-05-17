@@ -25,7 +25,7 @@ class TenancyServiceProvider extends ServiceProvider
             Events\CreatingTenant::class => [],
             Events\TenantCreated::class => [
                 JobPipeline::make([
-                    Jobs\CreateDatabase::class,
+                    Jobs\CreateDatabase::class, 
                     Jobs\MigrateDatabase::class,
                     // Jobs\SeedDatabase::class,
 
@@ -86,6 +86,7 @@ class TenancyServiceProvider extends ServiceProvider
             Events\SyncedResourceSaved::class => [
                 Listeners\UpdateSyncedResource::class,
             ],
+
 
             // Fired only when a synced resource is changed in a different DB than the origin DB (to avoid infinite loops)
             Events\SyncedResourceChangedInForeignDatabase::class => [],
